@@ -24,18 +24,56 @@ export default function Navbar() {
         const onScroll = () => {
             setScrolled(window.scrollY > 50);
 
-            const sections = navLinks.map(l => document.getElementById(l.id));
-            const scrollPos = window.scrollY + 200;
-            for (let i = sections.length - 1; i >= 0; i--) {
-                if (sections[i] && sections[i].offsetTop <= scrollPos) {
-                    setActive(navLinks[i].id);
-                    break;
+            // Re-sync active section
+            const scrollPos = window.scrollY;
+            const windowHeight = window.innerHeight;
+
+            // Find the most prominent section in the viewport
+            let current = active;
+
+            // Special case: At the top
+            if (scrollPos < 100) {
+                current = 'hero';
+            }
+            // Special case: At the bottom
+            else if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+                current = 'contact';
+            }
+            else {
+                // Check all sections using getBoundingClientRect
+                for (const link of navLinks) {
+                    const el = document.getElementById(link.id);
+                    if (el) {
+                        const rect = el.getBoundingClientRect();
+                        // If section's top is in the upper part of the viewport
+                        if (rect.top >= -100 && rect.top <= windowHeight * 0.4) {
+                            current = link.id;
+                            break;
+                        }
+                        // If the section is currently covering the scroll trigger point (20vh)
+                        if (rect.top <= windowHeight * 0.2 && rect.bottom >= windowHeight * 0.2) {
+                            current = link.id;
+                        }
+                    }
                 }
             }
+
+            if (current !== active) {
+                setActive(current);
+            }
         };
-        window.addEventListener('scroll', onScroll);
-        return () => window.removeEventListener('scroll', onScroll);
-    }, []);
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll(); // Instant check
+
+        // Delayed check for lazy-loaded sections that might shift layout
+        const timer = setTimeout(onScroll, 500);
+
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+            clearTimeout(timer);
+        };
+    }, [active]);
 
     const scrollTo = (id) => {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });

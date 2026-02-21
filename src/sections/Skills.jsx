@@ -3,24 +3,24 @@ import { motion } from 'framer-motion';
 import './Skills.css';
 
 const SKILLS = [
-    { name: 'C++', level: 88, x: '12%', y: '18%', category: 'language' },
-    { name: 'JavaScript', level: 90, x: '40%', y: '14%', category: 'language' },
-    { name: 'Python', level: 82, x: '72%', y: '16%', category: 'language' },
-    { name: 'TypeScript', level: 84, x: '25%', y: '36%', category: 'language' },
-    { name: 'SQL', level: 78, x: '58%', y: '32%', category: 'language' },
-    { name: 'React.js', level: 90, x: '10%', y: '55%', category: 'frontend' },
-    { name: 'Next.js', level: 80, x: '35%', y: '52%', category: 'frontend' },
-    { name: 'Tailwind CSS', level: 88, x: '60%', y: '50%', category: 'frontend' },
-    { name: 'ShadCN', level: 78, x: '83%', y: '35%', category: 'frontend' },
-    { name: 'Redux', level: 76, x: '85%', y: '55%', category: 'frontend' },
-    { name: 'Node.js', level: 86, x: '15%', y: '75%', category: 'backend' },
-    { name: 'Express.js', level: 85, x: '42%', y: '72%', category: 'backend' },
-    { name: 'Firebase', level: 75, x: '68%', y: '70%', category: 'backend' },
-    { name: 'MongoDB', level: 80, x: '28%', y: '88%', category: 'database' },
-    { name: 'MySQL', level: 78, x: '55%', y: '88%', category: 'database' },
-    { name: 'AWS (S3/EC2)', level: 78, x: '78%', y: '82%', category: 'cloud' },
-    { name: 'Git/GitHub', level: 88, x: '88%', y: '18%', category: 'tool' },
-    { name: 'Docker', level: 70, x: '80%', y: '68%', category: 'tool' },
+    { name: 'C++', x: '12%', y: '18%', category: 'language' },
+    { name: 'JavaScript', x: '40%', y: '14%', category: 'language' },
+    { name: 'Python', x: '72%', y: '16%', category: 'language' },
+    { name: 'TypeScript', x: '25%', y: '36%', category: 'language' },
+    { name: 'SQL', x: '58%', y: '32%', category: 'language' },
+    { name: 'React.js', x: '10%', y: '55%', category: 'frontend' },
+    { name: 'Next.js', x: '35%', y: '52%', category: 'frontend' },
+    { name: 'Tailwind CSS', x: '60%', y: '50%', category: 'frontend' },
+    { name: 'ShadCN', x: '83%', y: '35%', category: 'frontend' },
+    { name: 'Redux', x: '85%', y: '55%', category: 'frontend' },
+    { name: 'Node.js', x: '15%', y: '75%', category: 'backend' },
+    { name: 'Express.js', x: '42%', y: '72%', category: 'backend' },
+    { name: 'Firebase', x: '68%', y: '70%', category: 'backend' },
+    { name: 'MongoDB', x: '28%', y: '88%', category: 'database' },
+    { name: 'MySQL', x: '55%', y: '88%', category: 'database' },
+    { name: 'AWS (S3/EC2)', x: '78%', y: '82%', category: 'cloud' },
+    { name: 'Git/GitHub', x: '88%', y: '18%', category: 'tool' },
+    { name: 'Docker', x: '80%', y: '68%', category: 'tool' },
 ];
 
 const CATEGORY_COLORS = {
@@ -89,17 +89,6 @@ export default function Skills() {
                         />
                         <div className="skills__node-info">
                             <span className="skills__node-name">{skill.name}</span>
-                            <div className="skills__node-bar">
-                                <motion.div
-                                    className="skills__node-fill"
-                                    style={{ background: CATEGORY_COLORS[skill.category] }}
-                                    initial={{ width: 0 }}
-                                    whileInView={{ width: `${skill.level}%` }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 1, delay: i * 0.06 + 0.3 }}
-                                />
-                            </div>
-                            <span className="skills__node-level">{skill.level}%</span>
                         </div>
 
                         {/* Footprint animation */}

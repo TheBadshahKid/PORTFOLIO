@@ -78,44 +78,20 @@
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-sm);
-    padding: 0.4rem 0.7rem;
-    min-width: 100px;
+    padding: 0.5rem 0.8rem;
+    min-width: unset;
     opacity: 0.85;
     transition: all var(--transition-fast);
 }
 
-.skills__node:hover .skills__node-info {
-    opacity: 1;
-    border-color: var(--gold);
-    box-shadow: 0 0 15px var(--glow);
-}
-
 .skills__node-name {
     font-family: var(--font-heading);
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-heading);
     display: block;
-    margin-bottom: 0.3rem;
-}
-
-.skills__node-bar {
-    height: 3px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 2px;
-    overflow: hidden;
-    margin-bottom: 0.2rem;
-}
-
-.skills__node-fill {
-    height: 100%;
-    border-radius: 2px;
-}
-
-.skills__node-level {
-    font-size: 0.65rem;
-    color: var(--text-secondary);
+    margin-bottom: 0;
 }
 
 .skills__footprints {

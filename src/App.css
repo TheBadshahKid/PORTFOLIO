@@ -1,0 +1,57 @@
+/* =========================================================
+   APP-LEVEL LAYOUT & PERFORMANCE STYLES
+   ========================================================= */
+
+/* Main content sits above fixed backgrounds */
+main {
+    position: relative;
+    z-index: 1;
+}
+
+/* ---- CSS Containment for sections (paint isolation) ---- */
+.section {
+    contain: layout style;
+}
+
+/* ---- Performance hints for animated layers ---- */
+.scroll-progress {
+    will-change: transform;
+}
+
+.hogwarts-scene,
+.hogwarts-scene__sky,
+.hogwarts-scene__stars {
+    will-change: opacity;
+    contain: strict;
+}
+
+/* ---- Reduce motion for prefers-reduced-motion ---- */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .scroll-progress,
+    .hogwarts-scene__star {
+        animation: none !important;
+    }
+}
+
+/* ---- Mobile-first responsiveness ---- */
+@media (max-width: 768px) {
+    main {
+        overflow-x: hidden;
+    }
+
+    /* Reduce GPU layers on mobile */
+    .glass-card {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+}

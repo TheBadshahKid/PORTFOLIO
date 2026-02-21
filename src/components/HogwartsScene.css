@@ -1,0 +1,317 @@
+/* =========================================================
+   HOGWARTS SCENE — Castle Silhouette + Day/Night Sky
+   ========================================================= */
+
+.hogwarts-scene {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---- Sky ---- */
+.hogwarts-scene__sky {
+    position: absolute;
+    inset: 0;
+    transition: background 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hogwarts-scene--night .hogwarts-scene__sky {
+    background: linear-gradient(180deg,
+            #050a18 0%,
+            #0a0e1a 25%,
+            #0f1629 50%,
+            #141e3a 75%,
+            #1a2744 100%);
+}
+
+.hogwarts-scene--day .hogwarts-scene__sky {
+    background: linear-gradient(180deg,
+            #87CEEB 0%,
+            #b8d8e8 20%,
+            #e8d5b5 50%,
+            #f0e6d2 75%,
+            #f5edd8 100%);
+}
+
+/* ---- Stars ---- */
+.hogwarts-scene__stars {
+    position: absolute;
+    inset: 0;
+    transition: opacity 1.2s ease;
+}
+
+.hogwarts-scene--night .hogwarts-scene__stars {
+    opacity: 1;
+}
+
+.hogwarts-scene--day .hogwarts-scene__stars {
+    opacity: 0;
+}
+
+.hogwarts-scene__star {
+    position: absolute;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.4);
+    animation: twinkle ease-in-out infinite;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+}
+
+/* ---- Castle Silhouette ---- */
+.hogwarts-scene__castle {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    transition: filter 1.2s ease;
+    width: 500px;
+    max-width: 90vw;
+    opacity: 0.35;
+}
+
+.hogwarts-scene--day .hogwarts-scene__castle {
+    opacity: 0.15;
+}
+
+.hogwarts-scene--night .hogwarts-scene__castle {
+    opacity: 0.35;
+}
+
+/* Towers */
+.castle__tower {
+    position: relative;
+    background: #0a0e1a;
+    transition: background 1.2s ease;
+}
+
+.hogwarts-scene--day .castle__tower {
+    background: #2c1810;
+}
+
+.castle__tower--left {
+    width: 40px;
+    height: 100px;
+    border-radius: 4px 4px 0 0;
+}
+
+.castle__tower--center-left {
+    width: 55px;
+    height: 140px;
+    border-radius: 4px 4px 0 0;
+}
+
+.castle__tower--center-right {
+    width: 48px;
+    height: 120px;
+    border-radius: 4px 4px 0 0;
+}
+
+.castle__tower--right {
+    width: 40px;
+    height: 90px;
+    border-radius: 4px 4px 0 0;
+}
+
+/* Body */
+.castle__body {
+    position: relative;
+    flex: 1;
+    height: 80px;
+    background: #0a0e1a;
+    border-radius: 2px 2px 0 0;
+    transition: background 1.2s ease;
+}
+
+.hogwarts-scene--day .castle__body {
+    background: #2c1810;
+}
+
+/* Spires (triangular tops) */
+.castle__spire {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 30px solid #0a0e1a;
+    transition: border-color 1.2s ease;
+}
+
+.hogwarts-scene--day .castle__spire {
+    border-bottom-color: #2c1810;
+}
+
+.castle__spire--tall {
+    top: -45px;
+    border-left-width: 16px;
+    border-right-width: 16px;
+    border-bottom-width: 45px;
+}
+
+.castle__spire--medium {
+    top: -35px;
+    border-left-width: 14px;
+    border-right-width: 14px;
+    border-bottom-width: 35px;
+}
+
+/* Windows (glowing at night) */
+.castle__window {
+    position: absolute;
+    width: 6px;
+    height: 10px;
+    border-radius: 3px 3px 0 0;
+    background: #ffd700;
+    box-shadow: 0 0 8px 2px rgba(255, 215, 0, 0.6), 0 0 20px 4px rgba(255, 215, 0, 0.2);
+    animation: windowGlow 4s ease-in-out infinite;
+}
+
+@keyframes windowGlow {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        box-shadow: 0 0 6px 1px rgba(255, 215, 0, 0.4);
+    }
+
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 10px 3px rgba(255, 215, 0, 0.7), 0 0 25px 5px rgba(255, 215, 0, 0.25);
+    }
+}
+
+.castle__window--1 {
+    left: 12px;
+    top: 30px;
+    animation-delay: 0s;
+}
+
+.castle__window--2 {
+    left: 15px;
+    top: 35px;
+    animation-delay: 0.8s;
+}
+
+.castle__window--3 {
+    left: 30px;
+    top: 60px;
+    animation-delay: 1.5s;
+}
+
+.castle__window--4 {
+    left: 20%;
+    top: 20px;
+    animation-delay: 0.3s;
+}
+
+.castle__window--5 {
+    left: 50%;
+    top: 25px;
+    animation-delay: 2.0s;
+}
+
+.castle__window--6 {
+    left: 75%;
+    top: 18px;
+    animation-delay: 1.0s;
+}
+
+.castle__window--7 {
+    left: 14px;
+    top: 40px;
+    animation-delay: 2.5s;
+}
+
+.castle__window--8 {
+    left: 14px;
+    top: 25px;
+    animation-delay: 1.8s;
+}
+
+/* Ground / Hills */
+.hogwarts-scene__ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    transition: background 1.2s ease;
+}
+
+.hogwarts-scene--night .hogwarts-scene__ground {
+    background: linear-gradient(180deg, #0a0e1a 0%, #050a12 100%);
+}
+
+.hogwarts-scene--day .hogwarts-scene__ground {
+    background: linear-gradient(180deg, #c4a97d 0%, #a89060 100%);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .hogwarts-scene__castle {
+        width: 320px;
+    }
+
+    .castle__tower--left {
+        height: 70px;
+        width: 28px;
+    }
+
+    .castle__tower--center-left {
+        height: 100px;
+        width: 38px;
+    }
+
+    .castle__tower--center-right {
+        height: 85px;
+        width: 34px;
+    }
+
+    .castle__tower--right {
+        height: 65px;
+        width: 28px;
+    }
+
+    .castle__body {
+        height: 55px;
+    }
+
+    .castle__spire {
+        top: -22px;
+        border-left-width: 10px;
+        border-right-width: 10px;
+        border-bottom-width: 22px;
+    }
+
+    .castle__spire--tall {
+        top: -32px;
+        border-bottom-width: 32px;
+    }
+
+    .castle__spire--medium {
+        top: -26px;
+        border-bottom-width: 26px;
+    }
+}

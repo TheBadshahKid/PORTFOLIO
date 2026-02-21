@@ -1,0 +1,35 @@
+.footer {
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    background: rgba(10, 14, 26, 0.5);
+}
+
+.footer__inner {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.footer__magic {
+    font-family: var(--font-accent);
+    font-style: italic;
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+.footer__copy {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.footer__mischief {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    opacity: 0.5;
+}

@@ -1,0 +1,297 @@
+/* =========================================================
+   EASTER EGGS — Hidden magical interactions
+   ========================================================= */
+
+/* ---- Shared overlay ---- */
+.lumos-flash,
+.patronus-overlay,
+.parseltongue-overlay,
+.accio-overlay,
+.secret-overlay,
+.bonus-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99998;
+    pointer-events: none;
+}
+
+.secret-overlay,
+.bonus-overlay {
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+}
+
+/* ---- Lumos Flash ---- */
+.lumos-flash {
+    background: radial-gradient(circle at center,
+            rgba(255, 255, 255, 0.95) 0%,
+            rgba(255, 215, 0, 0.3) 50%,
+            transparent 80%);
+    z-index: 99999;
+    animation: lumosFlash 1.5s ease-out forwards;
+}
+
+@keyframes lumosFlash {
+    0% {
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* ---- Patronus ---- */
+.patronus-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.patronus-stag {
+    font-size: 8rem;
+    color: rgba(135, 206, 250, 0.9);
+    text-shadow: 0 0 60px rgba(135, 206, 250, 0.8), 0 0 120px rgba(135, 206, 250, 0.4);
+    filter: drop-shadow(0 0 40px rgba(135, 206, 250, 0.6));
+}
+
+/* ---- Parseltongue ---- */
+.parseltongue-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, rgba(26, 71, 42, 0.4) 0%, transparent 70%);
+}
+
+.parseltongue-snake {
+    font-size: 7rem;
+    filter: drop-shadow(0 0 40px rgba(30, 130, 60, 0.7));
+}
+
+.parseltongue-text {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    color: #2ecc71;
+    text-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
+    margin-top: 1rem;
+}
+
+/* ---- Accio Broom ---- */
+.accio-overlay {
+    overflow: hidden;
+}
+
+.accio-broom {
+    position: absolute;
+    font-size: 5rem;
+    filter: drop-shadow(0 0 20px rgba(201, 168, 76, 0.5));
+}
+
+/* ---- Wand Click Hint ---- */
+.wand-hint {
+    position: fixed;
+    bottom: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 0.5rem 1.2rem;
+    border-radius: var(--radius-xl);
+    z-index: 9999;
+    box-shadow: 0 0 20px var(--glow);
+}
+
+/* ---- Secret Card (Room of Requirement) ---- */
+.secret-card,
+.bonus-card {
+    position: relative;
+    background: var(--bg-secondary);
+    border: 1px solid var(--gold);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    max-width: 480px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 0 60px var(--glow), 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.secret-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.secret-close:hover {
+    color: var(--gold);
+}
+
+.secret-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.secret-title,
+.bonus-title {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.8rem;
+}
+
+.secret-text {
+    font-family: var(--font-accent);
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.secret-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: left;
+}
+
+.secret-fact {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.6rem 0.8rem;
+    background: rgba(201, 168, 76, 0.05);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.secret-fact-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.secret-footer {
+    margin-top: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+/* ---- Deathly Hallows Hidden Symbol ---- */
+.deathly-hallows {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 30px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0.06;
+    color: var(--gold);
+    transition: opacity 0.6s ease;
+    padding: 0;
+}
+
+.deathly-hallows:hover {
+    opacity: 0.5;
+}
+
+.dh-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ---- Bonus Achievements Modal ---- */
+.bonus-subtitle {
+    font-family: var(--font-accent);
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.bonus-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    text-align: left;
+}
+
+.bonus-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: rgba(201, 168, 76, 0.03);
+    opacity: 0.4;
+    transition: all var(--transition-normal);
+}
+
+.bonus-item--unlocked {
+    opacity: 1;
+    border-color: var(--gold-dim);
+    background: rgba(201, 168, 76, 0.08);
+}
+
+.bonus-emoji {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.bonus-item strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    margin-bottom: 0.15rem;
+}
+
+.bonus-item p {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.bonus-progress {
+    margin-top: 1.2rem;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 480px) {
+
+    .secret-card,
+    .bonus-card {
+        padding: 1.5rem;
+        max-width: 95%;
+    }
+}

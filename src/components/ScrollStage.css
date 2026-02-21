@@ -1,0 +1,114 @@
+/* =========================================================
+   SCROLL STAGE — Storytelling transition overlays & helpers
+   ========================================================= */
+
+/* Base stage container */
+.scroll-stage {
+    will-change: transform, opacity, filter;
+    position: relative;
+    z-index: 1;
+}
+
+/* ---- Platform 9¾ ---- */
+.scroll-stage--platform {
+    position: relative;
+}
+
+/* ---- Map Unfold ---- */
+.scroll-stage--mapUnfold {
+    transform-origin: center top;
+}
+
+/* Parchment overlay that fades with the unfold */
+.scroll-stage--mapUnfold::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center,
+            rgba(201, 168, 76, 0.06) 0%,
+            transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    animation: mapGlow 3s ease-in-out 1s forwards;
+}
+
+@keyframes mapGlow {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.3;
+    }
+}
+
+/* ---- Spellbook ---- */
+.scroll-stage--spellbook {
+    perspective: 1200px;
+}
+
+/* ---- Trophy Hall ---- */
+.scroll-stage--trophyHall {
+    position: relative;
+}
+
+/* Spotlight sweep on entry */
+.scroll-stage--trophyHall::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(201, 168, 76, 0.06) 40%,
+            rgba(255, 215, 0, 0.08) 50%,
+            rgba(201, 168, 76, 0.06) 60%,
+            transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+    animation: spotlightSweep 2s ease-in-out 0.5s forwards;
+}
+
+@keyframes spotlightSweep {
+    0% {
+        left: -60%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 120%;
+        opacity: 0;
+    }
+}
+
+/* ---- Section Divider ---- */
+.section-divider {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    opacity: 0.3;
+}
+
+/* ---- Scroll progress bar at very top ---- */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: var(--gradient-gold);
+    z-index: 10000;
+    transform-origin: left;
+}
